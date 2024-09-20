@@ -21,7 +21,8 @@ Smart building automation involves integrating and managing various building sys
 * **Device Control Service:** Manages control over all smart devices, including lighting, HVAC, and security devices for different building areas (e.g., floors or rooms).
 * **Notification & Schedule Service:** Handles building-wide notifications (e.g., alerts for security breaches or system failures) and schedules for automated operations (like turning off lights or adjusting HVAC based on time or occupancy).
 
-![pad](https://github.com/user-attachments/assets/380dd55b-797d-4fbb-a981-2090d839f3ee)
+![pad](https://github.com/user-attachments/assets/014ff33c-4e8b-46ab-8765-b4297e34ea75)
+
 
 
 
@@ -37,7 +38,7 @@ Smart building automation involves integrating and managing various building sys
 
 ### 4. Design Data Management
 
-#### 1. Device Control Service (C#)
+#### 1. Device Control Service
 * **Base URL** `/api/devices`
 * **Endpoints:**
 
@@ -120,7 +121,7 @@ Smart building automation involves integrating and managing various building sys
 ```
 
 
-#### 2. Notification and Scheduling Service (Python)
+#### 2. Notification and Scheduling Service
 * **Base URL** `/api/notifications`
 * **Endpoints:**
 
@@ -181,6 +182,51 @@ Smart building automation involves integrating and managing various building sys
     "time": "2024-09-19T18:00:00"
   }
 ]
+```
+
+#### 3. WebSocket
+##### Example1 (Control)
+
+* **Endpoint** `/ws/control`
+* **Request:** (JSON):
+
+```json
+{
+  "deviceId": "1234",
+  "action": "turnOn"
+}
+```
+
+* **Response** (JSON):
+
+```json
+{
+  "status": "success",
+  "message": "Device 1234 turned on"
+}
+```
+
+##### Example2 (Control)
+
+* **Endpoint** `/ws/control`
+* **Request:** (JSON):
+
+```json
+{
+  "deviceId": "light-3-12",
+  "action": "turn_on"
+}
+```
+
+* **Response** (JSON):
+
+```json
+{
+  "deviceId": "light-3-12",
+  "status": "on",
+  "message": "Light on floor 3, room 12 turned on successfully",
+  "timestamp": "2024-09-20T13:12:45Z"
+}
 ```
 
 * **Response Data Formats:** The data will mainly be transferred in JSON format, which is human-readable, easy to debug, and widely supported across different programming languages.
