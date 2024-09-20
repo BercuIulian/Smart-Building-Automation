@@ -21,9 +21,7 @@ Smart building automation involves integrating and managing various building sys
 * **Device Control Service:** Manages control over all smart devices, including lighting, HVAC, and security devices for different building areas (e.g., floors or rooms).
 * **Notification & Schedule Service:** Handles building-wide notifications (e.g., alerts for security breaches or system failures) and schedules for automated operations (like turning off lights or adjusting HVAC based on time or occupancy).
 
-![pad](https://github.com/user-attachments/assets/014ff33c-4e8b-46ab-8765-b4297e34ea75)
-
-
+![pad](https://github.com/user-attachments/assets/3965a725-6766-45ed-b895-029eb5840903)
 
 
 ### 3. Choose Technology Stack and Communication Patterns
@@ -187,7 +185,7 @@ Smart building automation involves integrating and managing various building sys
 #### 3. WebSocket
 ##### Example1 (Control)
 
-* **Endpoint** `/ws/control`
+* **Endpoint** `/ws/{id}/control`
 * **Request:** (JSON):
 
 ```json
@@ -208,7 +206,7 @@ Smart building automation involves integrating and managing various building sys
 
 ##### Example2 (Control)
 
-* **Endpoint** `/ws/control`
+* **Endpoint** `/ws/{id}/control`
 * **Request:** (JSON):
 
 ```json
