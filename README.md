@@ -2,7 +2,16 @@
 
 #### Bercu Iulian, FAF-211
 
+**In order to run the app**, have Docker installed on your machine and execute the following command:
+```
+docker-compose build
+```
 
+**In order to run the docker image** execute the following command:for Parking_Service:
+
+```
+docker-compose up
+```
 
 ### 1. Assess application suitability
 
