@@ -1,0 +1,145 @@
+{
+  "info": {
+    "name": "Smart Building API Collection",
+    "description": "Postman collection for Device Control and Notification services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Device Control Service",
+      "item": [
+        {
+          "name": "Get All Devices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5000/api/devices",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "devices"]
+            }
+          }
+        },
+        {
+          "name": "Add New Device",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"New Device\",\n  \"location\": \"Floor 3\",\n  \"settings\": {\n    \"temperature\": 20,\n    \"mode\": \"heating\"\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/devices",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "devices"]
+            }
+          }
+        },
+        {
+          "name": "Update Device Settings",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"settings\": {\n    \"temperature\": 24,\n    \"mode\": \"cooling\"\n  }\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/api/devices",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5000",
+              "path": ["api", "devices"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Notification and Scheduling Service",
+      "item": [
+        {
+          "name": "Send Notification",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 123,\n  \"deviceId\": 1,\n  \"message\": \"The AC Unit 1 has been turned off\",\n  \"timestamp\": \"2024-09-19T10:45:00\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "notifications"]
+            }
+          }
+        },
+        {
+          "name": "Schedule an Action",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"userId\": 123,\n  \"deviceId\": 1,\n  \"action\": \"turn off\",\n  \"time\": \"2024-09-19T15:00:00\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5001/api/notifications",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "notifications"]
+            }
+          }
+        },
+        {
+          "name": "Get Scheduled Actions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:5001/api/notifications?userId=123",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "5001",
+              "path": ["api", "notifications"],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "123"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
