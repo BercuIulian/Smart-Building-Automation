@@ -358,8 +358,14 @@ Smart building automation involves integrating and managing various building sys
 * Deploy services with Kubernetes to automate scaling and management. Each service can run multiple replicas to handle concurrent tasks, with horizontal scaling to adjust based on demand.
 * Kubernetes provides automatic load balancing among service replicas to optimize performance.
 
+## Service Boundaries (Updated)
+![Untitled Diagram](https://github.com/user-attachments/assets/31a32624-22e7-4324-9a96-dbda55e0bf99)
 
-
+1. Implement **read replication** for user data by setting up two dedicated read replicas to distribute and balance query load.
+2. Use a **Two-Phase Commit (2PC)** mechanism, managed by a Transaction Coordinator within the API Gateway, to ensure safe and atomic update of user data.
+3. Integrate a **Data Warehouse** to enable comprehensive managing of available devices and notification messages.
+4. Deploy the **ELK stack** to centralize and process logs across all system instances, enhancing monitoring and troubleshooting capabilities.
+5. Deploy a Redis cluster to enable sharded caching of user data using consistent hashing.
 
 
 
