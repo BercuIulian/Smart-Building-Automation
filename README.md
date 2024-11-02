@@ -90,7 +90,7 @@ Smart building automation involves integrating and managing various building sys
 }
 ```
 
-#####  1.3 PUT `/api/devices` - update device settings
+#####  1.3 PUT `/api/devices/{id}` - update device settings
 * **Request:** (JSON):
 
 ```json
@@ -110,7 +110,7 @@ Smart building automation involves integrating and managing various building sys
 }
 ```
 
-#####  1.4 GET `/api/devices` - get the status of a specific device
+#####  1.4 GET `/api/devices/{id}` - get the status of a specific device
 
 * **Response** (JSON):
 
@@ -124,6 +124,40 @@ Smart building automation involves integrating and managing various building sys
     "temperature": 22,
     "mode": "cooling"
   }
+}
+```
+
+#####  Error messages
+
+* **400 Bad Request:**
+
+```json
+{
+  "message": "Invalid request data provided."
+}
+```
+
+* **404 Not Found:**
+
+```json
+{
+  "message": "Device not found."
+}
+```
+
+* **500 Internal Server Error:**
+
+```json
+{
+  "message": "An internal error occurred. Please try again later."
+}
+```
+
+* **405 Method Not Allowed:**
+
+```json
+{
+  "message": "HTTP method not supported for this endpoint."
 }
 ```
 
@@ -152,6 +186,30 @@ Smart building automation involves integrating and managing various building sys
 }
 ```
 
+* **400 Bad Request:**
+
+```json
+{
+  "message": "Invalid request body."
+}
+```
+
+* **404 Not Found:**
+
+```json
+{
+  "message": "User or device not found."
+}
+```
+
+* **500 Internal Server Error:**
+
+```json
+{
+  "message": "An unexpected error occurred while sending the notification."
+}
+```
+
 #####  2.2 POST `/api/notifications` - Schedule an action on a device
 * **Request:** (JSON):
 
@@ -172,6 +230,38 @@ Smart building automation involves integrating and managing various building sys
 }
 ```
 
+* **400 Bad Request:**
+
+```json
+{
+  "message": "Missing or invalid parameters."
+}
+```
+
+* **404 Not Found:**
+
+```json
+{
+  "message": "User or device not found."
+}
+```
+
+* **500 Internal Server Error:**
+
+```json
+{
+  "message": "Failed to schedule the action."
+}
+```
+
+* **405 Method Not Allowed:**
+
+```json
+{
+  "message": "A conflicting schedule already exists for the device."
+}
+```
+
 #####  2.3 GET `/api/notifications` - Get the list of scheduled actions for a user
 
 * **Response** (JSON):
@@ -189,6 +279,22 @@ Smart building automation involves integrating and managing various building sys
     "time": "2024-09-19T18:00:00"
   }
 ]
+```
+
+* **404 Not Found:**
+
+```json
+{
+  "message": "No scheduled actions found for the user."
+}
+```
+
+* **500 Internal Server Error:**
+
+```json
+{
+  "message": "Failed to retrieve scheduled actions."
+}
 ```
 
 #### 3. WebSocket
